@@ -1,0 +1,180 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Righteous&display=swap');
+    </style>
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Crop Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            padding-top: 100px; /* Increased padding for nav height */
+            padding-bottom: 60px; /* Space for the fixed footer */
+        }
+
+        .container {
+            flex-grow: 1; /* This allows the container to take up available space */
+            padding: 20px; /* Add padding to container */
+        }
+
+        nav {
+            font-family:  "Righteous", sans-serif;
+            background-color: #4a90e2;
+            color: rgb(95, 101, 118);
+            padding: 10px; /* Reduced padding */
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed; /* Make nav fixed */
+            top: 0; /* Position at the top */
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensure it stays above other content */
+}
+
+nav h1 {
+    font-size: 1.8rem; /* Smaller font size */
+    margin: 0; /* Remove margin for tighter spacing */
+}
+
+        h1 {
+            margin-top: 20px; /* Ensure it does not overlap with nav */
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #2980b9;
+            font-size: 1.8rem;
+        }
+
+        .details,
+        .crops {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 15px;
+            width: 250px;
+            border: 2px solid #2980b9;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed; /* Make footer fixed */
+            bottom: 0; /* Position at the bottom */
+            left: 0;
+            right: 0;
+        }
+
+        @media (max-width: 600px) {
+            input[type="text"] {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1>Crop Planner for {{ location }}</h1>
+    </nav>
+
+    <form method="get" action=".">
+        <label for="location">Enter Location:</label>
+        <input type="text" name="location" id="location" placeholder="e.g., Chennai">
+        <button type="submit">Get Weather</button>
+    </form>
+    <div class="container">
+        <div class="details">
+            <h2>Weather Details:</h2>
+            <p>Temperature: {{ temperature }} °C</p>
+            <p>Weather: {{ weather }}</p>
+            <p>Humidity: {{ humidity }}%</p>
+            <p>Wind Speed: {{ wind_speed }} m/s</p>
+        </div>
+
+        <div class="crops">
+            <h2>Recommended Crops:</h2>
+            <p>{{ crops }}</p>
+        </div>
+    </div>
+
+   
+
+    <footer>
+        &copy; 2024-Nethaji. All Rights Reserved.
+    </footer>
+</body>
+
+</html>
